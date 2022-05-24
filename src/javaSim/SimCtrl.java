@@ -43,10 +43,10 @@ public class SimCtrl extends JPanel {
 		slider1.setBounds(0, 200, 300, 50);
 		slider2.setBounds(0, 350, 300, 50);
 		
-		Btn5Handler handler = new Btn5Handler();
-		btn5.addActionListener(handler);
+		btn5.addActionListener(new Btn5Handler());
+		btn5.addActionListener(new Btn6Handler());
 		slider1.addChangeListener(new Slider1Handler());
-		slider2.addChangeListener(new Slider1Handler());
+		slider2.addChangeListener(new Slider2Handler());
 		
 		add(btn1);
 		add(btn2);
@@ -77,14 +77,14 @@ public class SimCtrl extends JPanel {
 	
 	class Slider1Handler implements ChangeListener {
 		public void stateChanged(ChangeEvent e) {
-			smain.sdisp.moveGraph(slider1.getvalue());
+			smain.sdisp.moveGraph(slider1.getValue());
 			btn11.setText(slider1.getValue() + " ");
 		}
 	}
 	
 	class Slider2Handler implements ChangeListener {
 		public void stateChanged(ChangeEvent e) {
-			smain.sdisp.moveGraph(slider2.getvalue());
+			smain.sdisp.moveGraph(slider2.getValue());
 			btn11.setText(slider1.getValue() + " ");
 		}
 	}
