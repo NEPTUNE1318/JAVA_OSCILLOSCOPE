@@ -3,6 +3,7 @@ package javaSim;
 import java.awt.Color;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.*;
 import java.awt.event.ActionListener;
 
 public class SimCtrl extends JPanel {
@@ -44,6 +45,8 @@ public class SimCtrl extends JPanel {
 		
 		Btn5Handler handler = new Btn5Handler();
 		btn5.addActionListener(handler);
+		slider1.addChangeListener(new Slider1Handler());
+		slider2.addChangeListener(new Slider1Handler());
 		
 		add(btn1);
 		add(btn2);
@@ -62,10 +65,31 @@ public class SimCtrl extends JPanel {
 	
 	class Btn5Handler implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			smain.sdisp.drawFunc("Channel 1");
-			smain.sdisp.msg = "Channel 1";
+			smain.sdisp.changeChannel(1);
 		}
 	}
+	
+	class Btn6Handler implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			smain.sdisp.changeChannel(1);
+		}
+	}
+	
+	class Slider1Handler implements ChangeListener {
+		public void stateChanged(ChangeEvent e) {
+			smain.sdisp.moveGraph(slider1.getvalue());
+			btn11.setText(slider1.getValue() + " ");
+		}
+	}
+	
+	class Slider2Handler implements ChangeListener {
+		public void stateChanged(ChangeEvent e) {
+			smain.sdisp.moveGraph(slider2.getvalue());
+			btn11.setText(slider1.getValue() + " ");
+		}
+	}
+	
+	
 }
 
 
